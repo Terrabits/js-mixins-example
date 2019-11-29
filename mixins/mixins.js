@@ -4,16 +4,14 @@ class Mixins {
       // execute constructor
       Mixin['constructor'](this);
 
-      // copy everything except constructor
-      const  properties = Object.assign({}, Mixin);
-      delete properties['constructor'];
-
-      // add each to `this`
-      for(const property in properties) {
+      // add each property of Mixin
+      for(const property in Mixin) {
+        // skip constructor
         if (property === 'constructor') {
           continue;
         }
-        const value    = properties[property];
+        // add property
+        const value    = Mixin[property];
         this[property] = value;
       }
     });
